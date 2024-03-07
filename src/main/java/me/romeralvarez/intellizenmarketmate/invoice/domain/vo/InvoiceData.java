@@ -1,7 +1,7 @@
 package me.romeralvarez.intellizenmarketmate.invoice.domain.vo;
 
 
-import me.romeralvarez.intellizenmarketmate.shared.domain.SupermarketId;
+import me.romeralvarez.intellizenmarketmate.shared.domain.vo.SupermarketId;
 
 import java.math.BigDecimal;
 import java.util.List;
