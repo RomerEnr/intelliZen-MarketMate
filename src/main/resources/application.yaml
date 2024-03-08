@@ -1,3 +1,29 @@
 server:
   port: 3000
-
+  servlet:
+    context-path: /market-mate
+spring:
+  application:
+    name: intelliZen-market-mate
+  data:
+    mongodb:
+      uri: ${MONGODB_URL:mongodb://localhost:27017}
+      database: ${MONGODB_DATABASE:market-mate}
+      auto-index-creation: false
+      uuid-representation: standard
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+logging:
+  pattern:
+    console: "%d{ISO8601} %red([%thread]) %highlight(%-5level) %logger : %msg%n"
+    file: "%d{ISO8601} %red([%thread]) %highlight(%-5level) %logger : %msg%n"
+  level:
+    root: INFO
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: INFO

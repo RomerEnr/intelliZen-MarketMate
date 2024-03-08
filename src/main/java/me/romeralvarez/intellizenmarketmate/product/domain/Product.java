@@ -3,6 +3,7 @@ package me.romeralvarez.intellizenmarketmate.product.domain;
 import me.romeralvarez.intellizenmarketmate.product.domain.vo.ProductDescription;
 import me.romeralvarez.intellizenmarketmate.product.domain.vo.ProductId;
 import me.romeralvarez.intellizenmarketmate.product.domain.vo.ProductName;
+import me.romeralvarez.intellizenmarketmate.product.domain.vo.ProductPrice;
 
 import java.time.LocalDateTime;
 

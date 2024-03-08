@@ -1,6 +1,6 @@
 package me.romeralvarez.intellizenmarketmate.supermarket.domain;
 
-import me.romeralvarez.intellizenmarketmate.shared.domain.SupermarketId;
+import me.romeralvarez.intellizenmarketmate.shared.domain.vo.SupermarketId;
 import me.romeralvarez.intellizenmarketmate.supermarket.domain.vo.SupermarketName;
 
 import java.time.LocalDateTime;
