@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### enviroment ###
-enviroment/postgres_data/**
-enviroment/mongo_data/**
+environment/postgres_data/**
+environment/mongo_data/**
