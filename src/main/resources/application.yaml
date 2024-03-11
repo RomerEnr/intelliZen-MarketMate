@@ -5,6 +5,14 @@ server:
 spring:
   application:
     name: intelliZen-market-mate
+  main:
+    allow-bean-definition-overriding: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/intelliZen
+          jwk-set-uri: http://localhost:8080/realms/intelliZen/protocol/openid-connect/certs
   data:
     mongodb:
       uri: ${MONGODB_URL:mongodb://localhost:27017}
@@ -27,3 +35,13 @@ logging:
         web:
           filter:
             CommonsRequestLoggingFilter: INFO
+market-mate:
+  jwt:
+    converter:
+      resource-id: intelliZen-client
+      principal-attribute: preferred_username
+  security:
+    cors:
+      allowed-headers: "*"
+      allowed-methods: "*"
+      allowed-origins: "*"
