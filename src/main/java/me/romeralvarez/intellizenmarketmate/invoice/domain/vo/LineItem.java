@@ -23,4 +23,24 @@ public record LineItem(ItemName name, ItemQuantity quantity, ItemUnitPrice unitP
   public ItemTotalPrice getTotalPrice() {
     return totalPrice;
   }
+
+  @Override
+  public ItemName name() {
+    return name;
+  }
+
+  @Override
+  public ItemQuantity quantity() {
+    return quantity;
+  }
+
+  @Override
+  public ItemUnitPrice unitPrice() {
+    return unitPrice;
+  }
+
+  @Override
+  public ItemTotalPrice totalPrice() {
+    return totalPrice;
+  }
 }

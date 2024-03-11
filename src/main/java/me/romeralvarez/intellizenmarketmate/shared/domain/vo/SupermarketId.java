@@ -14,4 +14,8 @@ public class SupermarketId {
   public static ProductId withoutId() {
     return new ProductId(UUID.randomUUID());
   }
+
+  public UUID value() {
+    return value;
+  }
 }
