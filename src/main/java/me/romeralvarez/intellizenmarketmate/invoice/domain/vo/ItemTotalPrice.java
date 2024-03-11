@@ -17,4 +17,9 @@ public record ItemTotalPrice(BigDecimal value) {
   public BigDecimal getValue() {
     return value;
   }
+
+  @Override
+  public BigDecimal value() {
+    return value;
+  }
 }

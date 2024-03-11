@@ -6,13 +6,17 @@ import java.util.UUID;
 
 @Getter
 public class ProductId {
-  private final UUID uuid;
+  private final UUID value;
 
   public ProductId(UUID value) {
-    this.uuid = value;
+    this.value = value;
   }
 
   public static ProductId withoutId() {
     return new ProductId(UUID.randomUUID());
+  }
+
+  public UUID value() {
+    return value;
   }
 }

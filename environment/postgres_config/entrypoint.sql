@@ -1,1 +1,1 @@
-create schema if not exists login_security;
+create schema if not exists security;

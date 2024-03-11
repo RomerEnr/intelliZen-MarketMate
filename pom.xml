@@ -50,13 +50,6 @@
     </dependency>
 
     <dependency>
-      <groupId>com.okta.spring</groupId>
-      <artifactId>okta-spring-boot-starter</artifactId>
-      <version>3.0.6</version>
-    </dependency>
-
-
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
@@ -124,6 +117,13 @@
       <artifactId>vavr</artifactId>
       <version>0.9.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>33.0.0-jre</version>
+    </dependency>
+
 
   </dependencies>
   <dependencyManagement>

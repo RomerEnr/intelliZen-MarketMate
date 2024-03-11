@@ -1,10 +1,11 @@
 package me.romeralvarez.intellizenmarketmate.invoice.domain;
 
 import me.romeralvarez.intellizenmarketmate.invoice.domain.vo.*;
+import me.romeralvarez.intellizenmarketmate.shared.domain.AggregateRoot;
 
 import java.time.LocalDateTime;
 
-public class Invoice {
+public class Invoice extends AggregateRoot {
   private final InvoiceId id;
   private InvoiceData extractedData;
   private  InvoiceStatus invoiceStatus;
