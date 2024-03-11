@@ -20,7 +20,7 @@ public record TotalAmount(BigDecimal value) {
     return Either.right(value);
   }
 
-  public BigDecimal getValue() {
+  public BigDecimal value() {
     return value;
   }
 }
