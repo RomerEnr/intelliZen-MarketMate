@@ -1,23 +1,28 @@
 package me.romeralvarez.intellizenmarketmate.invoice.domain.vo;
 
 
+import lombok.Getter;
 import me.romeralvarez.intellizenmarketmate.shared.domain.vo.SupermarketId;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class InvoiceData {
-  private final SupermarketId supermarketId;
-  private final TotalAmount totalAmount;
-  private final List<LineItem> lineItems;
 
-  public InvoiceData(SupermarketId supermarketId, TotalAmount totalAmount, List<LineItem> lineItems) {
-    this.supermarketId = supermarketId;
-    this.totalAmount = totalAmount;
-    this.lineItems = lineItems;
+public record InvoiceData(SupermarketId supermarketId, TotalAmount totalAmount, List<LineItem> lineItems) {
+  @Override
+  public SupermarketId supermarketId() {
+    return supermarketId;
   }
 
+  @Override
+  public TotalAmount totalAmount() {
+    return totalAmount;
+  }
 
+  @Override
+  public List<LineItem> lineItems() {
+    return lineItems;
+  }
 
   private TotalAmount calculateTotalAmount(List<LineItem> lineItems) {
     BigDecimal totalAmount = lineItems.stream()
@@ -33,7 +38,7 @@ public class InvoiceData {
         .map(ItemTotalPrice::getValue)
         .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-    if (calculatedTotal.compareTo(totalAmount.getValue()) != 0) {
+    if (calculatedTotal.compareTo(totalAmount.value()) != 0) {
       throw new IllegalArgumentException("Total amount does not match the sum of line items");
     }
   }

@@ -18,4 +18,9 @@ public record ItemQuantity(BigDecimal value) {
   public BigDecimal getValue() {
     return value;
   }
+
+  @Override
+  public BigDecimal value() {
+    return value;
+  }
 }

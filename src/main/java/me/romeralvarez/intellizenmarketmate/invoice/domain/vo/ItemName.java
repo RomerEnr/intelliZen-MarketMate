@@ -10,4 +10,9 @@ public record ItemName(String value) {
       throw new IllegalArgumentException("Item description must not be null or empty");
     }
   }
+
+  @Override
+  public String value() {
+    return value;
+  }
 }
