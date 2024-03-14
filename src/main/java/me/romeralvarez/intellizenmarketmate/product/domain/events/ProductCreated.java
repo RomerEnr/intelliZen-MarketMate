@@ -61,4 +61,24 @@ public class ProductCreated extends DomainEvent {
         LocalDateTime.parse((String) body.get("updatedAt"))
     );
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+  }
 }
