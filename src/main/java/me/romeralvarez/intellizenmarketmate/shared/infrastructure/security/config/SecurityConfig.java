@@ -1,4 +1,4 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.security.config;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

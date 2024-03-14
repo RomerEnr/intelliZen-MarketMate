@@ -1,4 +1,4 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure;
 
 
 import me.romeralvarez.intellizenmarketmate.shared.domain.Utils;

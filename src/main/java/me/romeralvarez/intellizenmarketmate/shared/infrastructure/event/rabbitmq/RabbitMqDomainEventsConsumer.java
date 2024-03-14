@@ -1,10 +1,10 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.event.rabbitmq;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.event.rabbitmq;
 
 import me.romeralvarez.intellizenmarketmate.shared.domain.Service;
 import me.romeralvarez.intellizenmarketmate.shared.domain.Utils;
 import me.romeralvarez.intellizenmarketmate.shared.domain.bus.event.DomainEvent;
-import me.romeralvarez.intellizenmarketmate.shared.infraestructure.DomainEventJsonDeserializer;
-import me.romeralvarez.intellizenmarketmate.shared.infraestructure.DomainEventSubscribersInformation;
+import me.romeralvarez.intellizenmarketmate.shared.infrastructure.DomainEventJsonDeserializer;
+import me.romeralvarez.intellizenmarketmate.shared.infrastructure.DomainEventSubscribersInformation;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessagePropertiesBuilder;

@@ -1,7 +1,7 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.event.rabbitmq;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.event.rabbitmq;
 
 
-import me.romeralvarez.intellizenmarketmate.shared.infraestructure.DomainEventSubscriberInformation;
+import me.romeralvarez.intellizenmarketmate.shared.infrastructure.DomainEventSubscriberInformation;
 
 public final class RabbitMqQueueNameFormatter {
     public static String format(DomainEventSubscriberInformation information) {
