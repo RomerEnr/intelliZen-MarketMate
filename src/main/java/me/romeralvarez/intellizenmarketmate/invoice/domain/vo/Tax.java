@@ -1,9 +1,15 @@
 package me.romeralvarez.intellizenmarketmate.invoice.domain.vo;
 
-public class Tax {
-  private final TaxRate taxRate;
+import java.math.BigDecimal;
 
-  public Tax(TaxRate taxRate) {
-    this.taxRate = taxRate;
+public class Tax {
+  private final BigDecimal value;
+
+
+  public Tax(BigDecimal value) {
+    this.value = value;
+  }
+  public BigDecimal value() {
+    return value;
   }
 }
