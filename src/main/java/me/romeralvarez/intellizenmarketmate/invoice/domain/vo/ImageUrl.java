@@ -2,9 +2,13 @@ package me.romeralvarez.intellizenmarketmate.invoice.domain.vo;
 
 public class ImageUrl {
 
-  private final String url;
+  private final String value;
 
-  public ImageUrl(String url) {
-    this.url = url;
+  public ImageUrl(String value) {
+    this.value = value;
+  }
+
+  public String value() {
+    return value;
   }
 }
