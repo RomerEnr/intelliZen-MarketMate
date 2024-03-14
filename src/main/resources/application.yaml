@@ -3,6 +3,12 @@ server:
   servlet:
     context-path: /market-mate
 spring:
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USERNAME:admin}
+    password: ${RABBIT_PASSWORD:admin}
+    exchange: ${RABBIT_EXCHANGE:domain_events}
   application:
     name: intelliZen-market-mate
   main:
