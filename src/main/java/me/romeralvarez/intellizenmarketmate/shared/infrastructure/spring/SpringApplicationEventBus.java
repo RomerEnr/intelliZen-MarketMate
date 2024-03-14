@@ -1,4 +1,4 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.spring;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.spring;
 
 import me.romeralvarez.intellizenmarketmate.shared.domain.Service;
 import me.romeralvarez.intellizenmarketmate.shared.domain.bus.event.DomainEvent;

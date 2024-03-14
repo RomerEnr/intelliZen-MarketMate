@@ -1,4 +1,4 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.security.config;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.security.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;

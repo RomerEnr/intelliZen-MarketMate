@@ -1,4 +1,4 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.event.rabbitmq;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.event.rabbitmq;
 
 public final class RabbitMqExchangeNameFormatter {
     public static String retry(String exchangeName) {

@@ -1,7 +1,7 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.event.rabbitmq;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.event.rabbitmq;
 
-import me.romeralvarez.intellizenmarketmate.shared.infraestructure.DomainEventSubscribersInformation;
-import me.romeralvarez.intellizenmarketmate.shared.infraestructure.DomainEventsInformation;
+import me.romeralvarez.intellizenmarketmate.shared.infrastructure.DomainEventSubscribersInformation;
+import me.romeralvarez.intellizenmarketmate.shared.infrastructure.DomainEventsInformation;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;

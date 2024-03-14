@@ -1,9 +1,8 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure.event.rabbitmq;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure.event.rabbitmq;
 
 import me.romeralvarez.intellizenmarketmate.shared.domain.bus.event.DomainEvent;
 import me.romeralvarez.intellizenmarketmate.shared.domain.bus.event.EventBus;
 import org.springframework.amqp.AmqpException;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

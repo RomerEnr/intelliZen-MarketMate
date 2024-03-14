@@ -1,9 +1,8 @@
-package me.romeralvarez.intellizenmarketmate.shared.infraestructure;
+package me.romeralvarez.intellizenmarketmate.shared.infrastructure;
 
 import me.romeralvarez.intellizenmarketmate.shared.domain.Service;
 import me.romeralvarez.intellizenmarketmate.shared.domain.bus.event.DomainEvent;
 import org.reflections.Reflections;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
