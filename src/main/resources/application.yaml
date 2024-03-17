@@ -42,6 +42,11 @@ logging:
           filter:
             CommonsRequestLoggingFilter: INFO
 market-mate:
+  s3:
+    bucket: ${S3_BUCKET:market-mate}
+    region: ${S3_REGION:us-east-1}
+    access-key: ${S3_ACCESS_KEY:access-key}
+    secret-key: ${S3_SECRET_KEY:secret-key}
   jwt:
     converter:
       resource-id: intelliZen-client
