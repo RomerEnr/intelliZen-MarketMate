@@ -22,6 +22,7 @@
     <keycloak-admin-client.version>23.0.4</keycloak-admin-client.version>
     <log4j.version>2.21.1</log4j.version>
     <log4j-logstash-layout.version>1.0.5</log4j-logstash-layout.version>
+    <s3.version>2.25.11</s3.version>
   </properties>
 
   <dependencies>
@@ -143,6 +144,12 @@
       <groupId>com.vlkan.log4j2</groupId>
       <artifactId>log4j2-logstash-layout</artifactId>
       <version>${log4j-logstash-layout.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>software.amazon.awssdk</groupId>
+      <artifactId>s3</artifactId>
+      <version>${s3.version}</version>
     </dependency>
 
   </dependencies>
