@@ -40,7 +40,7 @@ public class InvoiceFileUploader {
       String fileUrl = uploadFileToStorage(file, userId);
       LocalDateTime now = LocalDateTime.now();
 
-      Invoice provisionalInvoice = createAndPersistProvisionalInvoice(now);
+      Invoice provisionalInvoice = createAndPersistProvisionalInvoice(userId, now);
       InvoiceFile invoiceFile = createAndPersistInvoiceFile(fileUrl, userId, provisionalInvoice.getId(), now);
 
       publishInvoiceFileEvents(invoiceFile);
@@ -60,8 +60,9 @@ public class InvoiceFileUploader {
     return metadata;
   }
 
-  private Invoice createAndPersistProvisionalInvoice(LocalDateTime timestamp) {
-    Invoice provisionalInvoice = Invoice.create(InvoiceId.withoutId(), InvoiceStatus.PENDING, timestamp, timestamp);
+  private Invoice createAndPersistProvisionalInvoice(UserId userId, LocalDateTime timestamp) {
+    Invoice provisionalInvoice = Invoice.create(InvoiceId.withoutId(), userId, InvoiceStatus.PENDING, timestamp, timestamp);
+    provisionalInvoice.setStatus(InvoiceStatus.PENDING);
     invoiceRepository.save(provisionalInvoice);
     return provisionalInvoice;
   }

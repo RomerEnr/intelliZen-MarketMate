@@ -6,19 +6,23 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class InvoiceCreated extends DomainEvent {
+  private final UUID userId;
   private final LocalDateTime createdAt;
   private final LocalDateTime updatedAt;
 
-  public InvoiceCreated(String aggregateId, LocalDateTime createdAt, LocalDateTime updatedAt) {
-    super(aggregateId);
+  public InvoiceCreated(UUID aggregateId, UUID userId, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    super(aggregateId.toString());
+    this.userId = userId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
 
-  public InvoiceCreated(String aggregateId, String eventId, String occurredOn, LocalDateTime createdAt, LocalDateTime updatedAt) {
+  public InvoiceCreated(String aggregateId, String eventId, String occurredOn, UUID userId, LocalDateTime createdAt, LocalDateTime updatedAt) {
     super(aggregateId, eventId, occurredOn);
+    this.userId = userId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
@@ -31,6 +35,7 @@ public class InvoiceCreated extends DomainEvent {
   @Override
   public HashMap<String, Serializable> toPrimitives() {
     return new HashMap<String, Serializable>() {{
+      put("userId", userId.toString());
       put("createdAt", createdAt.toString());
       put("updatedAt", updatedAt.toString());
     }};
@@ -42,6 +47,7 @@ public class InvoiceCreated extends DomainEvent {
         aggregateId,
         eventId,
         occurredOn,
+        UUID.fromString((String) body.get("userId")),
         LocalDateTime.parse((String) body.get("createdAt")),
         LocalDateTime.parse((String) body.get("updatedAt"))
     );
