@@ -1,5 +1,7 @@
 package me.romeralvarez.intellizenmarketmate.shared.infrastructure.security.config;
 
+import me.romeralvarez.intellizenmarketmate.shared.domain.AttributesConstants;
+import me.romeralvarez.intellizenmarketmate.shared.domain.vo.UserId;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.NonNull;
@@ -10,15 +12,15 @@ import org.springframework.security.oauth2.jwt.JwtClaimNames;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 @Component
 public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
+
   private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
   @Value("${market-mate.jwt.converter.principal-attribute}")
@@ -26,6 +28,7 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
 
   @Value("${market-mate.jwt.converter.resource-id}")
   private String resourceId;
+
   @Override
   public AbstractAuthenticationToken convert(@NonNull Jwt jwt) {
     Stream<GrantedAuthority> defaultStream = Stream.empty();
@@ -35,6 +38,13 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
 
     Collection<GrantedAuthority> authorities = Stream.concat(jwtAuthoritiesStream, extractResourceRoles(jwt).stream())
         .toList();
+
+    String userId = jwt.getSubject();
+    if (userId != null) {
+      UserId userIdValueObject = new UserId(UUID.fromString(userId));
+      RequestContextHolder.currentRequestAttributes().setAttribute(AttributesConstants.USER_ID, userIdValueObject, RequestAttributes.SCOPE_REQUEST);
+    }
+
     return new JwtAuthenticationToken(jwt, authorities, getPrincipalName(jwt));
   }
 
@@ -43,16 +53,17 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
     Map<String, Object> resource;
     Collection<String> resourceRoles;
 
-    if(jwt.getClaim("resource_access") == null){
+    if (jwt.getClaim("resource_access") == null) {
+      return Set.of();
     }
     resourceAccess = jwt.getClaim("resource_access");
 
-    if(resourceAccess.get(resourceId) == null){
+    if (resourceAccess.get(resourceId) == null) {
       return Set.of();
     }
     resource = (Map<String, Object>) resourceAccess.get(resourceId);
 
-    if(resource.get("roles") == null){
+    if (resource.get("roles") == null) {
       return Set.of();
     }
     resourceRoles = (Collection<String>) resource.get("roles");
@@ -64,11 +75,11 @@ public class JwtAuthenticationConverter implements Converter<Jwt, AbstractAuthen
   }
 
   private String getPrincipalName(Jwt jwt) {
-    String clainName = JwtClaimNames.SUB;
+    String claimName = JwtClaimNames.SUB;
 
-    if(jwt.getClaim(principalAttribute) != null){
-      clainName = principalAttribute;
+    if (jwt.getClaim(principalAttribute) != null) {
+      claimName = principalAttribute;
     }
-    return jwt.getClaim(clainName);
+    return jwt.getClaim(claimName);
   }
 }
