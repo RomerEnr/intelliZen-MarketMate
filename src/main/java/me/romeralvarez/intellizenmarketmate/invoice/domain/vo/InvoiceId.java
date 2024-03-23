@@ -3,18 +3,14 @@ package me.romeralvarez.intellizenmarketmate.invoice.domain.vo;
 
 import java.util.UUID;
 
-public class InvoiceId {
-  private final UUID value;
-
-  public InvoiceId(UUID value) {
-    this.value = value;
-  }
+public record InvoiceId(UUID value) {
 
   public static InvoiceId withoutId() {
     return new InvoiceId(UUID.randomUUID());
   }
 
-  public UUID getValue() {
+  @Override
+  public UUID value() {
     return value;
   }
 }

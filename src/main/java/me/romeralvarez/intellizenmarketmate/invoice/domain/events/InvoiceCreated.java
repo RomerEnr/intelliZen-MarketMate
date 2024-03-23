@@ -8,23 +8,17 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 public class InvoiceCreated extends DomainEvent {
-  private final BigDecimal tax;
-  private final String imageUrl;
   private final LocalDateTime createdAt;
   private final LocalDateTime updatedAt;
 
-  public InvoiceCreated(String aggregateId, BigDecimal tax, String imageUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
+  public InvoiceCreated(String aggregateId, LocalDateTime createdAt, LocalDateTime updatedAt) {
     super(aggregateId);
-    this.tax = tax;
-    this.imageUrl = imageUrl;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
 
-  public InvoiceCreated(String aggregateId, String eventId, String occurredOn, BigDecimal tax, String imageUrl, LocalDateTime createdAt, LocalDateTime updatedAt) {
+  public InvoiceCreated(String aggregateId, String eventId, String occurredOn, LocalDateTime createdAt, LocalDateTime updatedAt) {
     super(aggregateId, eventId, occurredOn);
-    this.tax = tax;
-    this.imageUrl = imageUrl;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
@@ -37,8 +31,6 @@ public class InvoiceCreated extends DomainEvent {
   @Override
   public HashMap<String, Serializable> toPrimitives() {
     return new HashMap<String, Serializable>() {{
-      put("tax", tax);
-      put("imageUrl", imageUrl);
       put("createdAt", createdAt.toString());
       put("updatedAt", updatedAt.toString());
     }};
@@ -50,8 +42,6 @@ public class InvoiceCreated extends DomainEvent {
         aggregateId,
         eventId,
         occurredOn,
-        (BigDecimal) body.get("tax"),
-        (String) body.get("imageUrl"),
         LocalDateTime.parse((String) body.get("createdAt")),
         LocalDateTime.parse((String) body.get("updatedAt"))
     );
